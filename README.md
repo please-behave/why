@@ -31,4 +31,5 @@ Component repositories reference this repository. It never references them back.
 
 ## Documents
 
+- [Product](why/README.md): purpose, principles and the decisions that span components.
 - [Vision](vision.md): where Please Behave is heading.

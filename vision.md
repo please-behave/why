@@ -23,7 +23,7 @@ Source-control platform ──facts──────┘   ▲
 Each component has its own repository, so its boundaries stay explicit and a developer or agent works with one component's code and knowledge at a time. A contract is owned by its producer; consumers reference it.
 
 - **Gateway.** The address the senders push to. Stateless, public, without database access. It authenticates, validates the attestation schema and forwards. Several instances behind one address provide horizontal scaling.
-- **Ledger.** The single owner of the database and the only API to it. It has two inputs, attestations from the gateway and facts from the source-control platform, and it serves the combined view for reading.
+- **Ledger.** The single owner of the database and the only API to it. It has two inputs, attestations from the gateway and facts from the source-control platform, and it serves the combined view for reading. Its append-only attestations form the history of verification over time.
 - **Cockpit.** The user interface. It talks to the ledger only and knows no source-control platform.
 
 ## Attestation
@@ -72,6 +72,14 @@ A release or deployment is a fact: a tag or commit, an environment and a time. T
 ## Source-control platform
 
 GitHub comes first. The ledger integrates it through its API: repository inventory, repository properties, commits, releases and deployments. The data model keeps a platform-neutral core of repository, commit, release and deployment, each qualified by platform and host, and keeps platform-specific details beside it. Another platform is then an additional adapter inside the ledger and changes no other component. Its details are not designed ahead.
+
+## Policy inheritance and controlled exceptions
+
+Organizations may want policies that projects inherit, and exceptions that are explicit, justified and limited in time instead of silent. How this relates to immutable shared rule sets and to adoption phases is open.
+
+## Governance based on architectural decisions
+
+Reviews could evaluate changes against the decisions a project has documented, so that recorded architecture is enforced and not only read. Rule sets can already express this; what a platform adds is visibility across repositories.
 
 ## Open questions
 

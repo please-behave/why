@@ -1,0 +1,28 @@
+id: DEC-0001
+name: Governance Without Orchestration
+context: >-
+  AI-assisted development is becoming more autonomous, while responsibility for
+  quality, architectural consistency and adherence to requirements stays with
+  developers and organizations. A governance product is tempted to grow toward
+  the tools around it: coding agents, workflow engines, CI platforms and
+  sandboxes. Each step widens the product and ties it to a moving ecosystem.
+decision: >-
+  Please Behave defines and evaluates the conditions under which development
+  results are acceptable, and it governs through feedback and blockade. It does
+  not implement features or repair code, decide how development tasks are
+  performed, orchestrate agents or workflows, replace Git, act as a CI/CD
+  platform, evaluate build, release or deployment processes, or provide a
+  sandbox. It offers no support tailored to individual coding agents and does
+  not improve an agent's working loop. It imposes no development methodology,
+  no requirements unrelated to the project and no dependence on one AI
+  provider. Relating evidence to release facts is not an evaluation of the
+  release process.
+rationale: >-
+  Developers and agents stay free to choose their workflows, tools and
+  architectures, and governance remains valid whoever writes the code. Each
+  excluded area has specialized tools that will serve it better and change
+  faster than Please Behave could follow. The exclusions are recorded so that a
+  proposal for one of them is recognized as a change of direction and not as a
+  feature. A proposal is measured by whether it makes expectations easier to
+  define, verify, enforce or understand without taking control of the
+  development process.

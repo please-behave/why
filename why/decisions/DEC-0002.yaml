@@ -1,0 +1,18 @@
+id: DEC-0002
+name: Verdicts Carry Their Evidential Weight
+context: >-
+  Deterministic checks interpret command results and are reproducible. AI
+  reviews evaluate expectations that need interpretation, but their judgments
+  are probabilistic, can differ between runs and depend on the evidence they
+  were given. Presenting both as equally reliable would overstate what a
+  passed review establishes.
+decision: >-
+  Please Behave keeps the difference between deterministic and probabilistic
+  verification visible in its results and in everything built on them. A passed
+  review is never presented as proof that a requirement is satisfied.
+rationale: >-
+  Both kinds of verification contribute to one outcome, but trust in the
+  outcome depends on knowing how each part was established. Hiding the
+  difference would invite more confidence than a review can justify, and
+  would lead organizations to tune their governance to an assurance it does not
+  provide.
