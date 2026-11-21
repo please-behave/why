@@ -1,18 +1,25 @@
 # Why
 
-Central documentation of Please Behave: the direction, the reasoning and the concepts that span several repositories.
+Why is a documentation approach that puts the reasons first. The name is an acronym with a pun: **W** is for What, **H** is for How and **Y** is for Why, and the English word "why" is pronounced like the letter Y.
 
-## What belongs here
+## Approach
 
-- Vision and direction, including ideas that are not implemented yet.
-- Cross-cutting concepts that several components share, such as identities and the trust model.
-- The map of repositories and how they relate.
+Code shows what a system does. It rarely says why it does so, and it can drift away from what was intended. Why keeps the business view next to the code:
 
-## What does not belong here
+- **Requirements** state what the product must satisfy.
+- **Decisions** record why it is the way it is.
+- **Components** assign the large building blocks and their responsibilities, and so show how the product is built.
+- **Rules and rule sets** carry a rationale for the same reason: it orients people and agents when they change them.
 
-Requirements, decisions and API contracts describe what a component is, not what it may become. They live in the repository of the component that owns them. Nothing in this repository is binding. A text here becomes a requirement or decision in the owning repository only once it describes that component as it exists.
+The documentation leads. It is the source of truth. If code and documentation disagree, either the code is changed or the documentation is corrected afterwards, and the difference is judged explicitly. Neither silently wins.
 
-Component repositories reference this repository; this repository never references them back.
+Why describes the present: what exists and why. Ideas for the future belong in [vision.md](vision.md) and become requirements and decisions once they exist.
+
+## Layout
+
+Every repository keeps the Why of its own component in a `why/` directory. This repository holds the Why that spans several components: the building blocks of the product and the decisions and requirements that concern more than one of them.
+
+Component repositories reference this repository. It never references them back.
 
 ## Repositories
 
@@ -21,10 +28,7 @@ Component repositories reference this repository; this repository never referenc
 | `cli` | The `please` executable: configuration, checks, reviews, reports. |
 | `action` | GitHub Action that installs and invokes the CLI. |
 | `why` | This repository. |
-| `gateway` (planned) | Receives attestations from CI runs. |
-| `ledger` (planned) | Stores evidence and platform facts and serves them. |
-| `cockpit` (planned) | Shows evidence, expectations and gaps. |
 
 ## Documents
 
-- [Governance platform](governance-platform.md): the central component that makes governance visible across repositories.
+- [Vision](vision.md): where Please Behave is heading.

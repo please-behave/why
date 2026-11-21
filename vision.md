@@ -1,10 +1,10 @@
-# Governance Platform
+# Vision
 
-Status: direction, not commitment. Open questions are listed at the end.
+This document describes the future. Nothing in it exists yet and nothing in it is a commitment. Open questions are listed at the end.
 
 ## Purpose
 
-The CLI verifies one repository at a time and stays fully functional without anything described here. The platform answers a different question for a whole organization: for which commits is there evidence that which rules, in which version, passed, and where are the gaps against what the organization expects?
+The vision adds a central governance platform. The CLI verifies one repository at a time and stays fully functional without it. The platform answers a different question for a whole organization: for which commits is there evidence that which rules, in which version, passed, and where are the gaps against what the organization expects?
 
 The platform creates transparency. It does not block builds; the CLI and the CI gates do that.
 
