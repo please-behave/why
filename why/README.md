@@ -28,3 +28,4 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0006](decisions/DEC-0006.yaml) Component-Owned Versioned HTTP Contracts
 - [DEC-0007](decisions/DEC-0007.yaml) Public Access Through a Proxy
 - [DEC-0008](decisions/DEC-0008.yaml) Attestations Carry Reported Evidence
+- [DEC-0009](decisions/DEC-0009.yaml) Shared Visual Identity

@@ -61,7 +61,7 @@ Every stored attestation records the method used, so the cockpit can show the we
 
 An organization defines which repositories must apply which rule sets and can set an effective date. The ledger combines those expectations with the repository inventory from the source-control platform and the attestations it has received. That lets it identify gaps even for repositories that have never reported.
 
-The cockpit shows green for passed, red for failed and yellow for not yet satisfied but allowed. Yellow needs no special CLI feature. A team binds a new rule set to a separate execution point that no gate requires, the CLI reports the failure truthfully, and the cockpit reads it as yellow until the effective date. Then the team moves the rule set to the blocking execution point.
+The cockpit uses the [shared status palette](brand/README.md#status-tokens). A team binds a new rule set to a separate execution point that no gate requires. The CLI reports the failure, and the cockpit presents it as not yet satisfied but allowed until the effective date. Then the team moves the rule set to the blocking execution point.
 
 Expectations carry validity ranges, so a past release is judged against what was expected at that time.
 

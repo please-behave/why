@@ -30,9 +30,10 @@ Shared decisions live here. Component-specific decisions and contracts stay in t
 | `gateway` | Authenticates senders, validates attestations and forwards them to the ledger. |
 | `ledger` | Stores attestations and serves them for reading. |
 | `cockpit` | Shows reported attestations to authorized viewers. |
-| `why` | Holds the product principles and shared decisions. |
+| `why` | Holds the product principles, shared decisions and visual identity. |
 
 ## Documents
 
 - [Product](why/README.md): purpose, principles and the decisions that span components.
 - [Vision](vision.md): where Please Behave is heading.
+- [Visual identity](brand/README.md) documents the shared logo assets, color tokens and their use.
