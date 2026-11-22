@@ -1,0 +1,12 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    uses: christianpflugradt/repository-catalog/.github/workflows/ci-check.yml@0f47bb84ff5435cb6b692275fb6767f4f599abdb # updates/workflows/ci
+    secrets:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

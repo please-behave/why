@@ -1,0 +1,22 @@
+include = [
+  "git::https://github.com/christianpflugradt/repository-catalog.git//rulesets/repository-conventions/mise.toml?ref=0f47bb84ff5435cb6b692275fb6767f4f599abdb",
+  "git::https://github.com/christianpflugradt/repository-catalog.git//rulesets/security/mise.toml?ref=0f47bb84ff5435cb6b692275fb6767f4f599abdb",
+  "git::https://github.com/christianpflugradt/repository-catalog.git//rulesets/open-source-software/mise.toml?ref=0f47bb84ff5435cb6b692275fb6767f4f599abdb",
+  "git::https://github.com/christianpflugradt/repository-catalog.git//rulesets/why/mise.toml?ref=81fc42fecee1b5531d7bd3b8879bac964dcdc25b",
+]
+
+[tools]
+"github:please-behave/cli" = "0.20.0"
+python = "3.15.2"
+
+[tasks.format]
+description = "Format shell scripts"
+run = "shfmt -w ."
+
+[tasks.verify]
+description = "Run the deterministic checks used by CI"
+run = "GITHUB_REPOSITORY=please-behave/why please run --at check --checks-only"
+
+[tasks.setup]
+description = "Prepare the repository for CI and offline Git hooks"
+run = "true"

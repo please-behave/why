@@ -15,7 +15,13 @@ Assign permanent IDs within each repository and never reuse them. Requirement, d
 
 ## Artifact references
 
-An unqualified ID such as `DEC-0001` refers to the repository containing the reference. Use `alias:ID`, such as `shared:DEC-0001`, to refer to an artifact in a linked repository. The prefix must be an alias in the local declaration's `linked` list. An artifact's own `id` is always unqualified.
+An unqualified ID such as `DEC-0001` refers to the repository containing the reference. Use `alias:ID` to refer to an artifact in a linked repository. The prefix must be an alias in the local declaration's `linked` list. An artifact's own `id` is always unqualified.
+
+For example, a reference to decision DEC-0001 in a repository declared under the alias `shared` is written as follows.
+
+```yaml
+shared:DEC-0001
+```
 
 The [reference schema](reference.schema.json) defines the syntax and the typed references used by artifact fields. A reference must resolve to an existing artifact of the kind the field expects.
 

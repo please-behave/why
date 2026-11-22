@@ -1,5 +1,7 @@
 # Why
 
+[![build](https://github.com/please-behave/why/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/please-behave/why/actions/workflows/ci.yml) [![license](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-3949ab.svg)](https://polyformproject.org/licenses/noncommercial/1.0.0/)
+
 Why is a documentation approach that puts the reasons first. The name is an acronym with a pun: **W** is for What, **H** is for How and **Y** is for Why, and the English word "why" is pronounced like the letter Y.
 
 ## Approach
