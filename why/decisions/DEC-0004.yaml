@@ -1,10 +1,15 @@
 id: DEC-0004
 name: Rust for the CLI and Services
 context: >-
-  The CLI and the platform services need a common implementation stack.
+  The CLI and the platform services need a common implementation stack. The
+  cockpit frontend runs in a browser and needs the browser ecosystem.
 decision: >-
-  The CLI, gateway, ledger and cockpit are written in Rust. The services use
-  Tokio and Axum. The ledger owns its persistence choices in ledger:DEC-0001.
+  The CLI and every service executable are written in Rust. The services use
+  Tokio and Axum. The cockpit's browser frontend is written in TypeScript and
+  served by the cockpit executable, keeping the cockpit a single deployable
+  unit. See cockpit:DEC-0005 for the frontend architecture. The ledger owns its
+  persistence choices in ledger:DEC-0001.
 rationale: >-
   A common language and service stack let maintainers use the same toolchain
-  and reuse their knowledge across the product.
+  and reuse their knowledge across the product. TypeScript gives the browser
+  frontend access to the browser ecosystem.
