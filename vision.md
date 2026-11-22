@@ -1,6 +1,6 @@
 # Vision
 
-This document describes the future. Nothing in it exists yet and nothing in it is a commitment. Open questions are listed at the end.
+This document describes where the platform is heading. The [product documentation](why/README.md) records the decisions that apply today. Open questions are listed at the end.
 
 ## Purpose
 
@@ -59,7 +59,7 @@ Every stored attestation records the method used, so the cockpit can show the we
 
 ## Expectations and gaps
 
-An organization states what it expects: which repositories must apply which rule sets, optionally from an effective date. The ledger compares this with the repository inventory of the source-control platform and the received attestations. A gap is something expected without evidence.
+An organization defines which repositories must apply which rule sets and can set an effective date. The ledger combines those expectations with the repository inventory from the source-control platform and the attestations it has received. That lets it identify gaps even for repositories that have never reported.
 
 The cockpit shows green for passed, red for failed and yellow for not yet satisfied but allowed. Yellow needs no special CLI feature. A team binds a new rule set to a separate execution point that no gate requires, the CLI reports the failure truthfully, and the cockpit reads it as yellow until the effective date. Then the team moves the rule set to the blocking execution point.
 
@@ -67,11 +67,15 @@ Expectations carry validity ranges, so a past release is judged against what was
 
 ## Releases and deployments
 
-A release or deployment is a fact: a tag or commit, an environment and a time. The platform links it to the attestations of that commit and shows whether every expected rule passed for what was released. This evidence per release is probably the greatest value of the platform.
+A release or deployment records the repository, commit, event type and time, along with its version or target environment where applicable. A commit hash can serve as the version. The platform links each event to attestations for the same commit and shows which expected rules passed, which failed and where evidence is missing.
+
+Commit-level evidence will have gaps because some commits stay local and some CI runs stop before reporting. Release and deployment records let teams see which rules ran for the code they actually published or deployed.
 
 ## Source-control platform
 
 GitHub comes first. The ledger integrates it through its API: repository inventory, repository properties, commits, releases and deployments. The data model keeps a platform-neutral core of repository, commit, release and deployment, each qualified by platform and host, and keeps platform-specific details beside it. Another platform is then an additional adapter inside the ledger and changes no other component. Its details are not designed ahead.
+
+The ledger periodically reconciles its inventory with the source-control platform so it can discover repositories that emit no events. Events such as pushes can bring individual repositories up to date sooner. Refresh frequency can vary with activity and must respect platform rate limits.
 
 ## Policy inheritance and controlled exceptions
 
@@ -89,6 +93,7 @@ Reviews could evaluate changes against the decisions a project has documented, s
 - **Queue.** Whether and when to decouple gateway and ledger with a queue; the internal interface leaves room for it.
 - **Database.** A relational database is expected, because the questions are joins between expectation, evidence and facts.
 - **Source of expectations.** A versioned file, repository properties of the source-control platform, or both.
-- **Release facts.** Platform webhooks first with reporting through the gateway as a fallback, or the reverse.
+- **Release facts.** Whether to use platform webhooks, an explicit reporting command in the release workflow, or both, and how to represent versions and environments.
 - **Non-blocking checks.** Whether deterministic checks also need an adoption phase, or the separate execution point suffices.
+- **Inventory refresh.** Which events trigger a refresh and how often periodic reconciliation runs.
 - **Hosting.** Where the platform runs.
