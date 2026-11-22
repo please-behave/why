@@ -1,0 +1,16 @@
+id: DEC-0011
+name: Owner-Assigned Rule Versions
+context: >-
+  A stable rule identity lets the platform follow one rule over time. Its
+  owner needs a way to signal how significant a change is to the organization.
+decision: >-
+  The rule owner assigns the version in the rule definition. It is optional
+  there and required to register the rule. A version has the form A.B, with two
+  non-negative decimal integers without leading zeros. The rule definition
+  contract sets a maximum length for the version string. Compare A numerically
+  first and then B numerically. A signals a fundamental change of the rule and
+  B signals any other change. A rule version conveys the owner's judgment
+  about the change and makes no claim of reproducible behavior.
+rationale: >-
+  Rule owners can communicate the significance of a change independently of
+  the repository revision and the inputs used in a particular run.

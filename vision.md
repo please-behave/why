@@ -31,7 +31,8 @@ Each component has its own repository, so its boundaries stay explicit and a dev
 A small, immutable statement about one CI run:
 
 - the execution point;
-- per rule: identity, version, status and whether it blocks;
+- per rule: rule identity, version and registration digest when available,
+  status and whether it blocks;
 - the overall status;
 - the scope of the run, such as checks-only or fail-fast;
 - the CLI version.
@@ -43,6 +44,13 @@ Repository and commit are taken from the authenticated source, not from the payl
 Evidence belongs to a commit. A run on a pull request merge reference proves nothing for the commit that lands later, especially after squash or rebase. Proof for a release needs a run on the release commit itself. Pull request runs remain valuable as feedback and as a trial of new rule sets.
 
 Execution points tied to Git hooks are not the basis. `check` is the recommended point for CI, and a project may define further execution points that behave like it.
+
+[DEC-0010](why/decisions/DEC-0010.yaml) defines rule identity and the role of
+the run-scoped ID. [DEC-0011](why/decisions/DEC-0011.yaml) defines rule versions.
+[DEC-0012](why/decisions/DEC-0012.yaml) defines what gets registered,
+[DEC-0013](why/decisions/DEC-0013.yaml) defines how results match registrations,
+and [DEC-0014](why/decisions/DEC-0014.yaml) assigns ownership and validation for
+rule knowledge in registrations.
 
 ## Sending
 
@@ -56,6 +64,12 @@ The gateway offers authentication methods as adapters:
 - **API key.** Platform-independent. An organization secret that rotates. It is not bound to a repository, so the sender's identity is self-asserted.
 
 Every stored attestation records the method used, so the cockpit can show the weaker trust level of the second one.
+
+## Rule sets
+
+A rule set would be identified in the same way as a rule, using its source
+repository, repository-relative directory path and rule set ID. Its revision
+would be derived from its members' rule identities, versions and enabled states.
 
 ## Expectations and gaps
 
@@ -87,8 +101,6 @@ Reviews could evaluate changes against the decisions a project has documented, s
 
 ## Open questions
 
-- **Identity of imported rules.** Source repository qualified by platform, path in it and rule ID, replacing the current binding-qualified identity.
-- **Rule version.** The resolved revision of the rule set, a checksum over the rule's files, or a mandatory explicit version that rejects a changed checksum.
 - **Sender.** The CLI writes the attestation and a CI step sends it, or the CLI sends it itself. The first keeps an HTTP and OIDC client out of the CLI.
 - **Queue.** Whether and when to decouple gateway and ledger with a queue; the internal interface leaves room for it.
 - **Database.** A relational database is expected, because the questions are joins between expectation, evidence and facts.

@@ -1,0 +1,18 @@
+id: DEC-0012
+name: Rule Version Registration
+context: >-
+  A result needs a durable reference to the details the cockpit can display
+  for the reported rule version.
+decision: >-
+  Register each rule version once from the CI of the repository that holds
+  the rule. Registration is separate from runs and execution points.
+  The registration and its digest cover exactly the fields displayed by the
+  cockpit: rule identity (DEC-0010), version (DEC-0011), kind, name,
+  description, the effective blocking value and prompt for a review, and the
+  complete rule knowledge document (DEC-0014). The check command, scripts,
+  parameter declarations, depends_on, run_at and enabled are outside both
+  the registration and its digest.
+rationale: >-
+  Publishing from the rule's own repository associates the displayed details
+  with the version its owner assigned. The digest binds those details to the
+  reported result without claiming reproducibility of execution.

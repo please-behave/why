@@ -29,3 +29,8 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0007](decisions/DEC-0007.yaml) Public Access Through a Proxy
 - [DEC-0008](decisions/DEC-0008.yaml) Attestations Carry Reported Evidence
 - [DEC-0009](decisions/DEC-0009.yaml) Shared Visual Identity
+- [DEC-0010](decisions/DEC-0010.yaml) Stable Rule Identity
+- [DEC-0011](decisions/DEC-0011.yaml) Owner-Assigned Rule Versions
+- [DEC-0012](decisions/DEC-0012.yaml) Rule Version Registration
+- [DEC-0013](decisions/DEC-0013.yaml) Verification Against Rule Registrations
+- [DEC-0014](decisions/DEC-0014.yaml) Rule Knowledge in Registrations

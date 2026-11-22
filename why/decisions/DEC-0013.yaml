@@ -1,0 +1,19 @@
+id: DEC-0013
+name: Verification Against Rule Registrations
+context: >-
+  Attestations carry reported evidence (DEC-0008). A result may arrive before
+  its rule version is registered, or report details that differ from the
+  registration.
+decision: >-
+  A result is verified when its rule identity, version and digest match a
+  registration under DEC-0012. It is unverified with reason unregistered if
+  it carries no version or there is no registration for its identity and
+  version. It is unverified with reason mismatch if a registration exists
+  for that identity and version and the digest differs. Store unverified
+  results like other results and resolve their verification status against
+  later registrations. Reject attempts to register an existing identity and
+  version with a different digest.
+rationale: >-
+  Keeping the result preserves the reported evidence regardless of delivery
+  order. A stable registration lets viewers see whether the reported rule
+  details agree with the registered version.

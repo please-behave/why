@@ -1,0 +1,15 @@
+id: DEC-0014
+name: Rule Knowledge in Registrations
+context: >-
+  The CLI repository defines the rule knowledge document as unversioned
+  orientation. Registration makes the complete document a product input
+  shared by the gateway, ledger and cockpit.
+decision: >-
+  The CLI repository owns the shape of the rule knowledge document. The
+  gateway enforces the required fields and the size bounds in its registration
+  contract. The ledger stores the document as received. The cockpit tolerates
+  unknown fields when it displays the document.
+rationale: >-
+  Keeping the document shape with its existing owner gives rule authors one
+  reference. Ingress validation bounds what the platform accepts, while storage
+  and display can accommodate fields added by the owner.

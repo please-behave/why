@@ -1,0 +1,17 @@
+id: DEC-0010
+name: Stable Rule Identity
+context: >-
+  An import pin or parameter change can give the same rule a different
+  identifier in a run, fragmenting the platform's history for that rule.
+decision: >-
+  Rule identity consists of the rule source, the repository-relative path of
+  the rule directory and the rule ID. The rule source uses the normalized Git
+  repository identity the CLI derives for publishing, consisting of the host
+  and path with the scheme, user information, port and terminal .git omitted.
+  Identity is independent of the ref, commit, parameters, rule set and
+  execution points. The run-scoped ID is a separate identifier used in plans
+  and reports. For imported rules it carries the binding qualification
+  described in cli:DEC-0014.
+rationale: >-
+  The platform can follow a rule across imports and revisions while each run
+  can still distinguish the bindings it evaluates.
