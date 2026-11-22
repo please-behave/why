@@ -12,7 +12,7 @@ AI-assisted development is becoming more autonomous, while responsibility for qu
 - **Evidential weight.** Deterministic and probabilistic verification stay distinguishable ([DEC-0002](decisions/DEC-0002.yaml)).
 - **Explicit enforcement.** Quality gates prevent progression when required conditions are not satisfied. A violation is distinguished from a technical failure to verify. A locally bypassable hook is no unconditional guarantee, and verification in CI is the authoritative one.
 - **Actionable and auditable results.** Results are structured and machine-readable. They state what was evaluated, the outcome, the evidence, the violations, what prevented verification and which source state was evaluated.
-- **Minimal complexity.** A small, self-contained native executable. No speculative extensibility, and no services or databases the product does not need.
+- **Minimal complexity.** Keep each component focused on its responsibility. Add services, storage and extension points only when the product needs them.
 
 ## Guiding question
 
@@ -22,3 +22,9 @@ Does this make development expectations easier to define, verify, enforce or und
 
 - [DEC-0001](decisions/DEC-0001.yaml) Governance Without Orchestration
 - [DEC-0002](decisions/DEC-0002.yaml) Verdicts Carry Their Evidential Weight
+- [DEC-0003](decisions/DEC-0003.yaml) One Repository per Component
+- [DEC-0004](decisions/DEC-0004.yaml) Rust for the CLI and Services
+- [DEC-0005](decisions/DEC-0005.yaml) CLI Binary and Service Images
+- [DEC-0006](decisions/DEC-0006.yaml) Component-Owned Versioned HTTP Contracts
+- [DEC-0007](decisions/DEC-0007.yaml) Public Access Through a Proxy
+- [DEC-0008](decisions/DEC-0008.yaml) Attestations Carry Reported Evidence

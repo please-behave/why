@@ -1,0 +1,15 @@
+id: DEC-0008
+name: Attestations Carry Reported Evidence
+context: >-
+  The platform receives outcomes from authenticated senders without running
+  their checks or reviews. The weight of those underlying verdicts is covered
+  by DEC-0002.
+decision: >-
+  Treat attestations as evidence reported by the authenticated sender.
+  Authentication establishes who submitted the attestation. The attestation
+  provides no independent proof of the reported results. Its payload omits
+  tool output, messages and findings. The ingest payload is defined in
+  gateway:CON-0001, and cockpit:DEC-0002 governs how viewers see its results.
+rationale: >-
+  Explicit attribution helps viewers judge the claims. Limiting the payload
+  keeps potentially sensitive diagnostic details in the sender's workflow.

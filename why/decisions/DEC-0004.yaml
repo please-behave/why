@@ -1,0 +1,10 @@
+id: DEC-0004
+name: Rust for the CLI and Services
+context: >-
+  The CLI and the platform services need a common implementation stack.
+decision: >-
+  The CLI, gateway, ledger and cockpit are written in Rust. The services use
+  Tokio and Axum. The ledger owns its persistence choices in ledger:DEC-0001.
+rationale: >-
+  A common language and service stack let maintainers use the same toolchain
+  and reuse their knowledge across the product.

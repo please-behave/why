@@ -19,7 +19,7 @@ Why describes the present: what exists and why. Ideas for the future belong in [
 
 Every repository keeps the Why of its own component in a `why/` directory. This repository holds the Why that spans several components: the building blocks of the product and the decisions and requirements that concern more than one of them.
 
-Component repositories reference this repository. It never references them back.
+Shared decisions live here. Component-specific decisions and contracts stay in the repositories that own them. [DEC-0003](why/decisions/DEC-0003.yaml) defines how to cite artifacts across repositories.
 
 ## Repositories
 
@@ -27,7 +27,10 @@ Component repositories reference this repository. It never references them back.
 |---|---|
 | `cli` | The `please` executable: configuration, checks, reviews, reports. |
 | `action` | GitHub Action that installs and invokes the CLI. |
-| `why` | This repository. |
+| `gateway` | Authenticates senders, validates attestations and forwards them to the ledger. |
+| `ledger` | Stores attestations and serves them for reading. |
+| `cockpit` | Shows reported attestations to authorized viewers. |
+| `why` | Holds the product principles and shared decisions. |
 
 ## Documents
 

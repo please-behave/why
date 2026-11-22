@@ -1,0 +1,11 @@
+id: DEC-0005
+name: CLI Binary and Service Images
+context: >-
+  The CLI runs in repository workflows. The gateway, ledger and cockpit run
+  as independently deployed services.
+decision: >-
+  Release the CLI as a native executable. Release the gateway, ledger and
+  cockpit as container images.
+rationale: >-
+  A native executable fits developer and CI environments. Images give service
+  operators consistent artifacts they can deploy independently.

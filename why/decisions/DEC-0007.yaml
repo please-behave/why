@@ -1,0 +1,13 @@
+id: DEC-0007
+name: Public Access Through a Proxy
+context: >-
+  Senders and viewers need Internet access to the platform while storage and
+  internal APIs need a private network boundary.
+decision: >-
+  Expose only the gateway and cockpit to the Internet, through a reverse proxy
+  or load balancer that terminates TLS and owns connection trust. Keep the
+  ledger and database on a private network. The gateway's connection-trust
+  boundary is defined in gateway:DEC-0003.
+rationale: >-
+  A shared ingress boundary concentrates transport security and keeps the
+  ledger API and database within the deployment's private network.

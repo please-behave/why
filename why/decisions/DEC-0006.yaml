@@ -1,0 +1,12 @@
+id: DEC-0006
+name: Component-Owned Versioned HTTP Contracts
+context: >-
+  Components exchange governance data and can release independently.
+decision: >-
+  Each component owns the contracts it exposes. Components exchange data
+  using JSON over HTTP, with the contract version in the API path. The
+  gateway owns gateway:API-0001. The ledger owns ledger:API-0001 and
+  ledger:API-0002.
+rationale: >-
+  Ownership gives consumers an authoritative interface. A version in the
+  path makes the compatibility boundary explicit at each call.
