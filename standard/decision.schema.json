@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision",
+  "description": "A deliberate choice, the circumstances that motivated it, and the reasoning behind it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "context",
+    "decision",
+    "rationale"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^DEC-[0-9]{4}$",
+      "description": "Permanent, unique identifier. IDs must never be reused.",
+      "examples": [
+        "DEC-0001"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short, descriptive name of the decision.",
+      "examples": [
+        "Versioned Interfaces"
+      ]
+    },
+    "context": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Describes the problem, circumstances, or constraints that motivated the decision."
+    },
+    "decision": {
+      "type": "string",
+      "minLength": 1,
+      "description": "States what was decided, using clear and unambiguous language."
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Explains why this approach was chosen, including relevant trade-offs or rejected alternatives."
+    },
+    "supersedes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "reference.schema.json#/$defs/decision"
+      },
+      "description": "Earlier decisions replaced by this decision. The referenced decisions remain unchanged."
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Artifact reference",
+  "description": "An artifact ID in the current repository or an ID prefixed by a declared linked repository alias.",
+  "type": "string",
+  "pattern": "^([a-z][a-z0-9-]*:)?(REQ|DEC|COMP|API|CON)-[0-9]{4}$",
+  "examples": [
+    "DEC-0001",
+    "shared:DEC-0001"
+  ],
+  "$defs": {
+    "requirement": {
+      "type": "string",
+      "pattern": "^([a-z][a-z0-9-]*:)?REQ-[0-9]{4}$"
+    },
+    "decision": {
+      "type": "string",
+      "pattern": "^([a-z][a-z0-9-]*:)?DEC-[0-9]{4}$"
+    },
+    "component": {
+      "type": "string",
+      "pattern": "^([a-z][a-z0-9-]*:)?COMP-[0-9]{4}$"
+    }
+  }
+}

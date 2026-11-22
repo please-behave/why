@@ -1,0 +1,14 @@
+repository:
+  alias: why
+  source: github:please-behave/why
+linked:
+  - alias: action
+    source: github:please-behave/action
+  - alias: cli
+    source: github:please-behave/cli
+  - alias: cockpit
+    source: github:please-behave/cockpit
+  - alias: gateway
+    source: github:please-behave/gateway
+  - alias: ledger
+    source: github:please-behave/ledger

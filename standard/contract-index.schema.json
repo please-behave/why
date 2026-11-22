@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "API contract index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "version",
+    "contracts"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^API-[0-9]{4}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The compatibility version shared by the contracts in this API."
+    },
+    "contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "document",
+          "requirements"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^CON-[0-9]{4}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "document": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)*$",
+            "description": "Path to the contract document relative to the index."
+          },
+          "schema": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)*$",
+            "description": "Path to the optional structural schema relative to the index."
+          },
+          "requirements": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "reference.schema.json#/$defs/requirement"
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "An API compatibility boundary and the contracts that define it."
+}

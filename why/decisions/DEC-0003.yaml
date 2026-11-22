@@ -4,8 +4,9 @@ context: >-
   Components have distinct responsibilities and maintain their own Why
   artifacts. Artifact IDs can recur in different repositories.
 decision: >-
-  Each component has its own repository. Qualify references to artifacts in
-  another repository with that repository's name, for example why:DEC-0001.
+  Each component has its own repository. References to another repository use
+  the alias declared according to the
+  [Why standard](../../standard/README.md#artifact-references).
 rationale: >-
   Repository boundaries keep code and its governing artifacts together.
-  Qualified IDs identify the owning repository and resolve ambiguity.
+  Declared aliases keep references unambiguous when a repository is renamed.

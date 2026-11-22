@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Repository declaration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "repository",
+    "linked"
+  ],
+  "properties": {
+    "repository": {
+      "$ref": "#/$defs/repository",
+      "description": "The repository containing this declaration."
+    },
+    "linked": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/repository"
+      },
+      "description": "Other repositories that this repository can reference. Aliases must also be unique across the entire declaration."
+    }
+  },
+  "$defs": {
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alias",
+        "source"
+      ],
+      "properties": {
+        "alias": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$",
+          "description": "Stable name for this repository within its group."
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^github:[A-Za-z0-9][A-Za-z0-9-]*/(?!\\.{1,2}$)[A-Za-z0-9_.-]+$",
+          "examples": [
+            "github:example-org/example-repo"
+          ]
+        }
+      }
+    }
+  }
+}
