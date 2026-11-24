@@ -5,7 +5,8 @@ context: >-
   rule. The ledger records the sender as registration provenance.
 decision: >-
   The authenticated sender is the owner of the rule registration. With GitHub
-  OIDC, the sender is the normalized repository identity defined by DEC-0010.
+  OIDC, the sender is the normalized repository identity defined by DEC-0010,
+  lowercased in full.
   Every rule source in the registration request must equal that identity.
   Write access to a repository confers registration authority for that
   repository's own source through GitHub OIDC. With an API key, the sender is
