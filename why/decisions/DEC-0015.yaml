@@ -1,0 +1,18 @@
+id: DEC-0015
+name: Rule Registration Ownership
+context: >-
+  DEC-0012 requires registration from the CI of the repository that holds the
+  rule. The ledger records the sender as registration provenance.
+decision: >-
+  The authenticated sender is the owner of the rule registration. With GitHub
+  OIDC, the sender is the normalized repository identity defined by DEC-0010.
+  Every rule source in the registration request must equal that identity.
+  Write access to a repository confers registration authority for that
+  repository's own source through GitHub OIDC. With an API key, the sender is
+  the key's label and no binding between the sender and the rule source is
+  enforced. The first registration of a rule version wins, and its recorded
+  owner is preserved under ledger:DEC-0004.
+rationale: >-
+  GitHub OIDC lets the gateway enforce the repository-of-origin requirement
+  in DEC-0012. Recording the authenticated sender identifies who registered
+  the version for either authentication method.
