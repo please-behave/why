@@ -33,6 +33,7 @@ A small, immutable statement about one CI run:
 - the execution point;
 - per rule: rule identity, version and registration digest when available,
   status and whether it blocks;
+- the rule sets bound in the run: identity, version and execution points;
 - the overall status;
 - the scope of the run, such as checks-only or fail-fast;
 - the CLI version.
@@ -67,9 +68,7 @@ Every stored attestation records the method used, so the cockpit can show the we
 
 ## Rule sets
 
-A rule set would be identified in the same way as a rule, using its source
-repository, repository-relative directory path and rule set ID. Its revision
-would be derived from its members' rule identities, versions and enabled states.
+A rule set is a versioned platform entity that bundles rules. [DEC-0016](why/decisions/DEC-0016.yaml) defines its identity, version and display name, [DEC-0017](why/decisions/DEC-0017.yaml) its registration and members, [DEC-0018](why/decisions/DEC-0018.yaml) how an attestation records the sets bound in a run and [DEC-0019](why/decisions/DEC-0019.yaml) when a set is complete for a repository. Rules defined in a repository without a set are not a rule set.
 
 ## Expectations and gaps
 

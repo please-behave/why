@@ -35,3 +35,7 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0013](decisions/DEC-0013.yaml) Verification Against Rule Registrations
 - [DEC-0014](decisions/DEC-0014.yaml) Rule Knowledge in Registrations
 - [DEC-0015](decisions/DEC-0015.yaml) Rule Registration Ownership
+- [DEC-0016](decisions/DEC-0016.yaml) Rule Set Identity and Versions
+- [DEC-0017](decisions/DEC-0017.yaml) Rule Set Version Registration
+- [DEC-0018](decisions/DEC-0018.yaml) Rule Sets Bound in Attestations
+- [DEC-0019](decisions/DEC-0019.yaml) Rule Set Compliance

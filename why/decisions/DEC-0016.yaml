@@ -1,0 +1,23 @@
+id: DEC-0016
+name: Rule Set Identity and Versions
+context: >-
+  The platform knows rules (DEC-0010, DEC-0011) but not the Rule Sets that
+  bundle and share them. Owners and the cockpit need Rule Sets as versioned
+  entities to show which repositories comply with a set.
+decision: >-
+  A Rule Set is a platform entity. Its identity consists of the set source,
+  the repository-relative path of the set directory and the set ID. The set
+  source uses the normalized Git repository identity defined by DEC-0010.
+  Identity is independent of the ref, commit and parameters. This extends
+  DEC-0010 and leaves it valid. The owner assigns the set version in the
+  A.B form of DEC-0011, with the same comparison and meaning, and
+  the version is required to register the set. A Rule Set may have a display
+  name. Without it, the cockpit shows the set ID. Owners choose short names.
+  Rules defined in a repository without a Rule Set are not a Rule Set and
+  have no counterpart on the platform. It affects ledger:REQ-0029 and
+  cockpit:REQ-0026.
+rationale: >-
+  Identifying a set like a rule lets the platform follow it across imports and
+  revisions. Owner-assigned versions give a set the same signal of change
+  significance as a rule. Leaving local rules out keeps the platform focused
+  on shared bundles.

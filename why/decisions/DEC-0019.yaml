@@ -1,0 +1,21 @@
+id: DEC-0019
+name: Rule Set Compliance
+context: >-
+  The cockpit should show which repositories fully comply with a Rule Set.
+  Rules, execution points and statuses vary between runs.
+decision: >-
+  A Rule Set is complete for a repository when the repository's newest
+  attestation whose execution points contain check binds the set with the
+  check execution point and every member of the bound version has status PASS
+  in that attestation. A member is matched to its result by rule identity,
+  never by run-scoped ID. WARN and NOT_RUN are not PASS. A bound version
+  without a registration cannot be evaluated and is not complete. Other
+  execution points are stored but do not decide what the cockpit shows. The
+  ledger computes completeness and the cockpit displays it without computing
+  it, as it does for the verification of results in cockpit:REQ-0024. It affects
+  ledger:REQ-0028, the contracts ledger:CON-0002 and ledger:CON-0003, and
+  cockpit:REQ-0020.
+rationale: >-
+  The check execution point is the recommended point for CI evidence. Tying
+  completeness to the newest such attestation and to PASS keeps the statement
+  strict and simple.

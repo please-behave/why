@@ -1,0 +1,28 @@
+id: DEC-0017
+name: Rule Set Version Registration
+context: >-
+  A set version must be a stable reference for what a run bound and what the
+  cockpit shows as its members. DEC-0012 and DEC-0013 do this for rules.
+decision: >-
+  Register each Rule Set version once from the CI of the repository that holds
+  the set, under the authority and ownership of DEC-0015. A registered version
+  lists its member rules. Each member carries the rule identity (DEC-0010), the
+  rule version (DEC-0011), the rule digest (DEC-0012) and its enabled state in
+  the set. The ledger computes the set digest over this list and owns the
+  format of the digest. The ledger accepts a registration only if every member
+  rule version is registered and the member's digest equals the registered
+  one. Any mismatch fails the registration of that set version and registers
+  nothing of it. Member rules may come from other sources than the set, so
+  their registration does not depend on the sender of the set. Registering an
+  existing set identity and version with a different digest is a conflict, as
+  in DEC-0013. A changed set is registered as a new version. The ledger records
+  the display name with the first registration of the version, and the
+  display name is outside the digest. This extends DEC-0012 and
+  DEC-0013 and leaves them valid. It affects ledger:REQ-0023, ledger:REQ-0026
+  and ledger:REQ-0027, the contracts ledger:CON-0005 and ledger:CON-0006
+  and gateway:CON-0002, and gateway:REQ-0011 and gateway:REQ-0012.
+rationale: >-
+  Requiring registered members with matching digests means a set version can
+  only describe rule versions the platform can display. A digest over the
+  member list makes any change of membership visible as a conflict or a new
+  version.

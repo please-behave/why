@@ -1,0 +1,18 @@
+id: DEC-0018
+name: Rule Sets Bound in Attestations
+context: >-
+  Compliance with a Rule Set depends on which sets a run bound and at which
+  execution points, in addition to the rule results (DEC-0008).
+decision: >-
+  An attestation records each Rule Set bound in the run with its identity
+  (DEC-0016), its version and the execution points at which the set was
+  bound. Like all attestation content, this is reported evidence under
+  DEC-0008. The ledger stores the binding and resolves it against the
+  registration of the version, also if the registration arrives later. This
+  extends DEC-0008 and leaves it valid. It affects ledger:REQ-0005, the
+  contracts gateway:CON-0001, ledger:CON-0001 and ledger:CON-0003, and
+  gateway:REQ-0007.
+rationale: >-
+  Recording the binding in the run lets the platform judge compliance from
+  evidence the sender reports without rerunning anything, and in any delivery
+  order.
