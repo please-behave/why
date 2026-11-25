@@ -1,0 +1,36 @@
+id: DEC-0020
+name: Release Facts
+context: >-
+  Teams need to find the reported governance evidence for a release commit.
+  A release workflow can report the release before the ledger integrates
+  with the source-control platform.
+decision: >-
+  An authenticated sender reports a release fact with a repository, a
+  version and a commit. The version is an opaque string unique within the
+  repository. A Git tag is optional. The commit is a full Git object ID
+  supplied in the request. The release fact submission contract names the
+  fact kind in its path, POST /v0/facts/releases. The gateway's public ingest
+  and the ledger's internal ingest each define a release fact contract.
+
+  Apply the ownership model from DEC-0015. For GitHub OIDC, the reported
+  repository must equal the normalized authenticated repository. For an API
+  key, the sender is the key's label and can report for any repository.
+  The ledger stores the authenticated sender and method so viewers can
+  distinguish the weaker repository attribution of API keys. This extends
+  gateway:REQ-0013 to release fact submissions.
+
+  The first fact for a repository and version wins, following the conflict
+  policy of DEC-0013. Repeating that version and commit leaves the record
+  untouched. Repeating the version with a different commit is a conflict
+  and preserves the first record. The recorded time is the ledger's
+  receipt time. Publication time is outside the fact's claim.
+
+  The ledger relates a release fact to attestations by repository and
+  commit in either delivery order. Recording the fact creates no evidence.
+  DEC-0021 defines the evidence viewers see for that commit.
+rationale: >-
+  Explicit reporting works with any release workflow and supports version
+  schemes independent of Git tags. Keeping the first record preserves its
+  commit and provenance across retries. The link to attestations answers
+  what was reported for that commit within the governance boundary of
+  DEC-0001.

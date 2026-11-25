@@ -1,0 +1,32 @@
+id: DEC-0021
+name: Evidence per Commit
+context: >-
+  DEC-0019 defines Rule Set completeness for a repository. A release can
+  refer to an older commit, so viewers need the results and completed Rule
+  Sets for that particular commit.
+decision: >-
+  For a repository and commit, the ledger selects the newest attestation it
+  received for that pair whose execution points contain check. If receipt
+  times tie, use the greater attestation identifier as in ledger:CON-0002.
+  Without a qualifying attestation the commit has no evidence. The
+  selected attestation determines the reported rule results and the
+  completed Rule Sets. Apply DEC-0019 to that attestation: a set must be
+  bound at check, the bound version must be registered, and every member
+  must have a matching PASS result by rule identity. A missing result or
+  any status other than PASS leaves the set incomplete. The cockpit
+  displays the ledger's computation as reported evidence under DEC-0008.
+
+  The ledger commit-evidence read contract follows the receipt ordering of
+  ledger:CON-0002 and the result and verification semantics of
+  ledger:CON-0003 and ledger:REQ-0028. It applies the same completeness
+  requirements as ledger:REQ-0040 and ledger:REQ-0041, whose
+  repository-wide reads are defined in ledger:CON-0013 and ledger:CON-0014.
+  The cockpit's commit-evidence contract and display requirements follow
+  the reported-results presentation in cockpit:CON-0002 and
+  cockpit:REQ-0010 and the ledger-computed completeness used in
+  cockpit:CON-0006 and cockpit:REQ-0028.
+rationale: >-
+  Selecting one check attestation for the exact commit ties the result to
+  one reported run and avoids combining partial outcomes from different
+  runs. Reusing repository completeness gives PASS the same meaning in
+  both views.

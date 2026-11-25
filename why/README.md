@@ -39,3 +39,5 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0017](decisions/DEC-0017.yaml) Rule Set Version Registration
 - [DEC-0018](decisions/DEC-0018.yaml) Rule Sets Bound in Attestations
 - [DEC-0019](decisions/DEC-0019.yaml) Rule Set Compliance
+- [DEC-0020](decisions/DEC-0020.yaml) Release Facts
+- [DEC-0021](decisions/DEC-0021.yaml) Evidence per Commit
