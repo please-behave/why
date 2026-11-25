@@ -8,8 +8,10 @@ decision: >-
   the Visual Identity document (../../brand/README.md). Reserve brand colors
   for identity and use the dedicated status tokens for outcomes. Pair every
   status color with a visible label or distinct symbol and provide an accessible
-  name when the symbol stands alone. Meet WCAG 2.2 AA contrast for text and
-  meaningful interface elements using the verified pairings in that document.
+  name when the symbol stands alone. Use a dedicated Rule Set token to
+  distinguish shared Rule Sets from bundles of local rules. Meet WCAG 2.2 AA
+  contrast for text and meaningful interface elements using the verified
+  pairings in that document.
 rationale: >-
   A shared mark and palette keep the product recognizable across components.
   Semantic tokens let each theme express the same meaning. Distinct labels or

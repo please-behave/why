@@ -41,6 +41,16 @@ Apply status tokens to labels and symbols on neutral surfaces.
 | `status-not-run` | Not run | `text-muted` | `text-muted` |
 | `status-allowed` | Not yet satisfied but allowed (yellow) | `#725800` | `#F3D16B` |
 
+## Rule Set token
+
+Use the muted platinum blue `rule-set` token to identify shared Rule Sets. Bundles of local rules use neutral tokens only. For a filled chip, use `rule-set` for the outline and pair it with the matching surface and label text.
+
+| Token | Role | Light | Dark |
+|---|---|---|---|
+| `rule-set` | Chip outline | `#637A92` | `#91A6BD` |
+| `rule-set-surface` | Chip fill | `#E7EDF4` | `#2B3949` |
+| `rule-set-text` | Chip label | `#344A61` | `#C8D8E7` |
+
 ## Verified contrast
 
 Use at least 4.5:1 for normal text and 3:1 for large text, meaningful interface components and graphics under WCAG 2.2 AA. Large text is at least 18 pt regular or 14 pt bold. The ratios below use WCAG relative luminance with unrounded values checked against the thresholds. [Text contrast](https://www.w3.org/TR/WCAG22/#contrast-minimum) · [Non-text contrast](https://www.w3.org/TR/WCAG22/#non-text-contrast)
@@ -56,6 +66,15 @@ Use at least 4.5:1 for normal text and 3:1 for large text, meaningful interface 
 | `status-warning` | 7.55:1 | 6.89:1 | 10.61:1 | 9.22:1 |
 | `status-not-run` | same as `text-muted` | same as `text-muted` | same as `text-muted` | same as `text-muted` |
 | `status-allowed` | 6.75:1 | 6.16:1 | 12.39:1 | 10.76:1 |
+
+For Rule Set chips, compute WCAG relative luminance from the sRGB values and divide the lighter luminance plus 0.05 by the darker luminance plus 0.05. The unrounded ratios meet 4.5:1 for the label on the chip fill and 3:1 for the outline against the fill and both surrounding surfaces.
+
+| Foreground | Background | Light | Dark |
+|---|---|---:|---:|
+| `rule-set-text` | `rule-set-surface` | 7.75:1 | 8.09:1 |
+| `rule-set` | `rule-set-surface` | 3.77:1 | 4.70:1 |
+| `rule-set` | `surface` | 4.44:1 | 7.35:1 |
+| `rule-set` | `surface-raised` | 4.05:1 | 6.39:1 |
 
 Use `brand-primary` text on `brand-accent` and `brand-light` text on `brand-primary` for branded surfaces in either theme.
 
