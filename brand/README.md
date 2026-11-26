@@ -24,9 +24,12 @@ The values are the most frequent RGB samples in flat interior patches of the ori
 |---|---|---|---|
 | `surface` | Page background | `#FFFFFF` | `#15131C` |
 | `surface-raised` | Panel background | `#F5F4F7` | `#23202C` |
-| `border` | Meaningful control boundaries and dividers | `#77717F` | `#888291` |
+| `border` | Component-identifying boundaries for inputs, buttons, badges and chips, and focus-relevant outlines | `#77717F` | `#888291` |
+| `border-subtle` | Decorative table row separators, section rules and dividers within widgets | `#C2BEC8` | `#4B4655` |
 | `text-muted` | Secondary text | `#605B69` | `#B1AAB9` |
 | `text` | Primary text | `#201D27` | `#F7F5F9` |
+
+Use `border-subtle` only where the content stays perceivable without the divider. Use `border` wherever an outline is the sole cue that identifies a component or indicates focus.
 
 ## Status tokens
 
@@ -55,11 +58,14 @@ Use the muted platinum blue `rule-set` token to identify shared Rule Sets. Bundl
 
 Use at least 4.5:1 for normal text and 3:1 for large text, meaningful interface components and graphics under WCAG 2.2 AA. Large text is at least 18 pt regular or 14 pt bold. The ratios below use WCAG relative luminance with unrounded values checked against the thresholds. [Text contrast](https://www.w3.org/TR/WCAG22/#contrast-minimum) · [Non-text contrast](https://www.w3.org/TR/WCAG22/#non-text-contrast)
 
+Decorative `border-subtle` dividers carry no information on their own and have no minimum contrast requirement. The ratios are recorded to keep the dividers visible on both neutral surfaces.
+
 | Foreground | Light on `surface` | Light on `surface-raised` | Dark on `surface` | Dark on `surface-raised` |
 |---|---:|---:|---:|---:|
 | `text` | 16.58:1 | 15.13:1 | 16.98:1 | 14.75:1 |
 | `text-muted` | 6.57:1 | 5.99:1 | 8.16:1 | 7.09:1 |
 | `border` | 4.72:1 | 4.30:1 | 4.95:1 | 4.30:1 |
+| `border-subtle` | 1.83:1 | 1.67:1 | 2.02:1 | 1.75:1 |
 | `status-passed` | 7.01:1 | 6.40:1 | 10.41:1 | 9.04:1 |
 | `status-failed` | 7.55:1 | 6.89:1 | 8.62:1 | 7.49:1 |
 | `status-error` | 7.86:1 | 7.18:1 | 10.06:1 | 8.74:1 |
