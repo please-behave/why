@@ -1,0 +1,25 @@
+id: DEC-0025
+name: Archived Repositories
+context: >-
+  DEC-0024 defines repository inventory, head observations and status.
+  Archived repositories receive no new commits. The platform sync contract
+  (ledger:CON-0023) already reports whether each repository is archived.
+decision: |-
+  Keep archived repositories in the inventory with their archive flag.
+  Archiving a repository never deletes its stored data.
+
+  Collectors skip default-branch head fetches for archived repositories.
+  When a repository is unarchived, treat it as newly discovered for head
+  collection and fetch its head even if its last-activity timestamp is
+  unchanged.
+
+  The ledger excludes archived repositories from the repository overview
+  (ledger:CON-0024). An archived inventory entry prevents the repository
+  from appearing or being counted as unmanaged, even if it has attestations.
+  Archived repositories are hidden by default. Configuration to show them
+  again is deferred to a separate decision.
+rationale: >-
+  Skipping head fetches avoids unnecessary platform requests. Hiding archived
+  repositories keeps the overview focused on active repositories. Retaining
+  their inventory entries and history prevents existing attestations from
+  making them appear unmanaged and preserves evidence when work resumes.
