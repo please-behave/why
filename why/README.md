@@ -41,3 +41,5 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0019](decisions/DEC-0019.yaml) Rule Set Compliance
 - [DEC-0020](decisions/DEC-0020.yaml) Release Facts
 - [DEC-0021](decisions/DEC-0021.yaml) Evidence per Commit
+- [DEC-0022](decisions/DEC-0022.yaml) Deployment Targets
+- [DEC-0023](decisions/DEC-0023.yaml) Deployment Facts

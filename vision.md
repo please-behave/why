@@ -15,16 +15,16 @@ A report is a local, unsigned file. An attestation sent from CI is evidence: its
 ## Components
 
 ```
-CI run ────────────attestation──┐
-                                ├──► Gateway ──► Ledger ──► Database
-Release workflow ──release fact─┘                   ▲
-                                                 Cockpit
+CI run ──────────────attestation─────┐
+Release workflow ────release fact────┼──► Gateway ──► Ledger ──► Database
+Deployment workflow ─deployment fact─┘                  ▲
+                                                      Cockpit
 ```
 
 Each component has its own repository, so its boundaries stay explicit and a developer or agent works with one component's code and knowledge at a time. A contract is owned by its producer; consumers reference it.
 
 - **Gateway.** The address the senders push to. Stateless, public, without database access. It authenticates senders, validates submissions and forwards them. Several instances behind one address provide horizontal scaling.
-- **Ledger.** The single owner of the database and the only API to it. It receives attestations and release facts from the gateway and serves the combined view for reading. Its append-only attestations form the history of verification over time. A future source-control integration can add platform facts.
+- **Ledger.** The single owner of the database and the only API to it. It receives attestations, release facts and deployment facts from the gateway and serves the combined view for reading. Its append-only attestations form the history of verification over time. A future source-control integration can add platform facts.
 - **Cockpit.** The user interface. It talks to the ledger only and knows no source-control platform.
 
 ## Attestation
@@ -85,9 +85,15 @@ An authenticated release workflow can explicitly report the repository, version 
 
 The ledger links the release to reported evidence for the same repository and commit, regardless of delivery order. [Evidence per Commit](why/decisions/DEC-0021.yaml) defines which attestation supplies the rule results and completed Rule Sets. A release can have no evidence if its commit has no attestation containing `check`.
 
+## Deployments and environments
+
+The reporter is the authenticated sender and owns the target. The subject is the deployed software, identified by its repository and a release version or full commit. The target is where the software runs, identified by its owner and registered name. For example, an infrastructure repository can report that it deployed a release of an application repository to a target registered by the infrastructure repository.
+
+[Deployment Targets](why/decisions/DEC-0022.yaml) defines target declaration and registration. Central classes of targets, such as live and non-live, belong to expectations. [Deployment Facts](why/decisions/DEC-0023.yaml) defines the current deployment, its history and the link to reported commit evidence.
+
 ## Source-control platform
 
-GitHub comes first. The planned ledger integration can supply repository inventory, repository properties and commits. It could later complement explicitly reported releases and supply deployment facts. The data model keeps a platform-neutral core qualified by platform and host, with platform-specific details beside it. Another platform can be added as an adapter inside the ledger.
+GitHub comes first. The planned ledger integration can supply repository inventory, repository properties and commits. It could later complement explicitly reported releases. The data model keeps a platform-neutral core qualified by platform and host, with platform-specific details beside it. Another platform can be added as an adapter inside the ledger.
 
 The ledger periodically reconciles its inventory with the source-control platform so it can discover repositories that emit no events. Events such as pushes can bring individual repositories up to date sooner. Refresh frequency can vary with activity and must respect platform rate limits.
 
@@ -106,7 +112,6 @@ Reviews could evaluate changes against the decisions a project has documented, s
 - **Database.** A relational database is expected, because the questions are joins between expectation, evidence and facts.
 - **Source of expectations.** A versioned file, repository properties of the source-control platform, or both.
 - **Platform-sourced releases.** Whether and how source-control platform events or API reads should complement explicitly reported releases.
-- **Deployments and environments.** How to record deployments and represent their target environments.
 - **Non-blocking checks.** Whether deterministic checks also need an adoption phase, or the separate execution point suffices.
 - **Inventory refresh.** Which events trigger a refresh and how often periodic reconciliation runs.
 - **Hosting.** Where the platform runs.

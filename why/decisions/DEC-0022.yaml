@@ -1,0 +1,30 @@
+id: DEC-0022
+name: Deployment Targets
+context: >-
+  A repository that manages an environment can deploy software from several
+  repositories. Teams need stable names for the places where that software runs.
+decision: >-
+  The repository that owns a deployment target declares it by name in its
+  Please Behave configuration and registers it from its CI, following the
+  registration model of DEC-0012, DEC-0015 and DEC-0017. The target identity
+  consists of the authenticated owner and the name. With GitHub OIDC the owner
+  is the normalized repository identity, lowercased in full. With an API key
+  the key label identifies the authenticated owner, with the weaker repository
+  attribution described in DEC-0015. Names are unique within an owner's
+  registrations. Viewers always see both owner and name.
+
+  Registration is idempotent for the same owner and name and carries no
+  version or digest. The registered names are the fixed list of valid targets
+  for that owner. The ledger rejects a deployment to an unregistered target.
+  Central classes such as live and non-live belong to expectations.
+
+  Target declarations and explicit CI registration affect the CLI configuration
+  contract cli:API-0005 and its requirement cli:REQ-0283, and extend the
+  registration workflow of cli:CON-0014 and cli:REQ-0355. Target registration
+  needs contracts in gateway:API-0001 and ledger:API-0001, with authentication
+  under gateway:REQ-0013 and validation and forwarding requirements modeled on
+  gateway:REQ-0011, gateway:REQ-0012 and ledger:REQ-0033.
+rationale: >-
+  Owner-scoped names let different repositories use the same name for their
+  own targets. Explicit registration makes the valid names visible before a
+  deployment is reported and lets the ledger reject spelling errors.

@@ -1,0 +1,52 @@
+id: DEC-0023
+name: Deployment Facts
+context: >-
+  A release fact records which commit a version names under DEC-0020. Teams
+  also need to know what is running and where, including when a separate
+  repository configures and deploys the software.
+decision: >-
+  The authenticated sender is the reporter and owns the target registered
+  under DEC-0022. The subject is the deployed software, identified by its
+  normalized repository identity under DEC-0010 and exactly one of a release
+  version or a full Git commit object ID. The target is where the subject runs,
+  identified by the reporter's authenticated owner identity and the registered
+  name. Any authenticated sender may report a deployment of any subject
+  repository to its own registered target. A future restriction on which
+  subjects a sender may report would be a configurable ledger rejection rule.
+
+  The ledger records deployments as events and keeps their history. For each
+  target and subject repository, the latest event by ledger receipt time is the
+  current deployment. A report with the same version or the same explicit
+  commit as the current deployment is unchanged and adds no event. Reporting
+  an earlier deployment again after a different one records a new event.
+  Receipt time records when the ledger received the report. The event conveys
+  the sender's account of the deployment and makes no claim about when the
+  software started or how it was deployed, within the boundary of DEC-0001.
+
+  The ledger resolves a reported version through the release fact for that
+  repository and version under DEC-0020. A deployment reported before that
+  release is recorded remains valid. Until the release fact is available,
+  show "release not recorded". For a known commit, apply DEC-0021 to the
+  subject repository and commit, and present the result as reported evidence
+  under DEC-0008. "No evidence" means the commit is known and has no qualifying
+  attestation.
+
+  The deployment fact submission path is POST /v0/facts/deployments in both
+  the gateway's public ingest contract (gateway:API-0001) and the ledger's
+  internal ingest contract (ledger:API-0001). Sender authentication follows
+  gateway:REQ-0013. The subject-ownership checks in gateway:REQ-0013 and
+  ledger:REQ-0043 apply to releases as specified in DEC-0020. Deployment ingest
+  checks the reporter's ownership of the target. The deployment contracts and
+  delivery requirements follow the ingest pattern of gateway:CON-0004,
+  gateway:REQ-0014 and ledger:CON-0015. The ledger needs a deployment-specific
+  recording requirement alongside the release recording in ledger:REQ-0044.
+  Deployment read contracts in ledger:API-0002 reuse the evidence contract
+  ledger:CON-0016 and requirement ledger:REQ-0046. Cockpit deployment views
+  follow the receipt time, attribution and reported evidence presentation of
+  cockpit:CON-0012 and cockpit:REQ-0032.
+rationale: >-
+  Separating the reporter from the subject allows an infrastructure repository
+  to report what it deploys. Keeping changes in receipt order preserves
+  rollbacks and leaves retries of the current report without a duplicate
+  event. Resolving evidence for the exact commit gives it the same meaning
+  in deployment and release views.
