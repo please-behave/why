@@ -43,3 +43,4 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0021](decisions/DEC-0021.yaml) Evidence per Commit
 - [DEC-0022](decisions/DEC-0022.yaml) Deployment Targets
 - [DEC-0023](decisions/DEC-0023.yaml) Deployment Facts
+- [DEC-0024](decisions/DEC-0024.yaml) Repository Inventory and Status

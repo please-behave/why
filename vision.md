@@ -17,14 +17,16 @@ A report is a local, unsigned file. An attestation sent from CI is evidence: its
 ```
 CI run ──────────────attestation─────┐
 Release workflow ────release fact────┼──► Gateway ──► Ledger ──► Database
-Deployment workflow ─deployment fact─┘                  ▲
-                                                      Cockpit
+Deployment workflow ─deployment fact─┘
+
+Source-control collector ──platform facts──► Ledger ◄──reads── Cockpit
 ```
 
 Each component has its own repository, so its boundaries stay explicit and a developer or agent works with one component's code and knowledge at a time. A contract is owned by its producer; consumers reference it.
 
 - **Gateway.** The address the senders push to. Stateless, public, without database access. It authenticates senders, validates submissions and forwards them. Several instances behind one address provide horizontal scaling.
-- **Ledger.** The single owner of the database and the only API to it. It receives attestations, release facts and deployment facts from the gateway and serves the combined view for reading. Its append-only attestations form the history of verification over time. A future source-control integration can add platform facts.
+- **Ledger.** The single owner of the database and the only API to it. It receives attestations, release facts and deployment facts from the gateway and serves the combined view for reading. Its append-only attestations form the history of verification over time. It also receives platform facts from collectors over the internal network.
+- **Source-control collector.** Reads its platform API and reports repository inventory and default-branch head observations directly to the ledger. The first is the [GitHub collector](https://github.com/please-behave/github-collector).
 - **Cockpit.** The user interface. It talks to the ledger only and knows no source-control platform.
 
 ## Attestation
@@ -56,7 +58,7 @@ rule knowledge in registrations.
 
 ## Sending
 
-A failed delivery is a separate outcome from the rule verdict. Each project configures whether it fails the build or lets it pass. A missing attestation appears in the cockpit as a gap, which is why letting it pass stays visible. Delivery is idempotent per repository, run, attempt and execution point, so it can be retried.
+A failed delivery is a separate outcome from the rule verdict. Each project configures whether it fails the build or lets it pass. Missing check evidence for an observed default-branch head appears in the cockpit according to the repository status in [DEC-0024](why/decisions/DEC-0024.yaml). Delivery is idempotent per repository, run, attempt and execution point, so it can be retried.
 
 ## Authentication
 
@@ -93,9 +95,7 @@ The reporter is the authenticated sender and owns the target. The subject is the
 
 ## Source-control platform
 
-GitHub comes first. The planned ledger integration can supply repository inventory, repository properties and commits. It could later complement explicitly reported releases. The data model keeps a platform-neutral core qualified by platform and host, with platform-specific details beside it. Another platform can be added as an adapter inside the ledger.
-
-The ledger periodically reconciles its inventory with the source-control platform so it can discover repositories that emit no events. Events such as pushes can bring individual repositories up to date sooner. Refresh frequency can vary with activity and must respect platform rate limits.
+[Repository Inventory and Status](why/decisions/DEC-0024.yaml) defines periodic collection, the inventory and sampled default-branch heads. The ledger combines these platform facts with reported check evidence for the exact observed commit to derive repository status on read. This shows where evidence is pending or overdue, where a repository has never integrated and where collection data is missing or stale.
 
 ## Policy inheritance and controlled exceptions
 
@@ -113,5 +113,4 @@ Reviews could evaluate changes against the decisions a project has documented, s
 - **Source of expectations.** A versioned file, repository properties of the source-control platform, or both.
 - **Platform-sourced releases.** Whether and how source-control platform events or API reads should complement explicitly reported releases.
 - **Non-blocking checks.** Whether deterministic checks also need an adoption phase, or the separate execution point suffices.
-- **Inventory refresh.** Which events trigger a refresh and how often periodic reconciliation runs.
 - **Hosting.** Where the platform runs.

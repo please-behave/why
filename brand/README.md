@@ -34,12 +34,12 @@ Apply status tokens to labels and symbols on neutral surfaces.
 
 | Token | Meaning | Light | Dark |
 |---|---|---|---|
-| `status-passed` | Passed (green) | `#176639` | `#78D69A` |
-| `status-failed` | Failed (red) | `#A41C2C` | `#FF929C` |
+| `status-passed` | Passed (green), or current repository evidence | `#176639` | `#78D69A` |
+| `status-failed` | Failed (red), or a repository that has never integrated | `#A41C2C` | `#FF929C` |
 | `status-error` | Verification error | `#753396` | `#DAB0F3` |
-| `status-warning` | Warning | `#884000` | `#F5B97C` |
-| `status-not-run` | Not run | `text-muted` | `text-muted` |
-| `status-allowed` | Not yet satisfied but allowed (yellow) | `#725800` | `#F3D16B` |
+| `status-warning` | Warning, including overdue repository evidence | `#884000` | `#F5B97C` |
+| `status-not-run` | Not run, or unknown repository status | `text-muted` | `text-muted` |
+| `status-allowed` | Not yet satisfied but allowed (yellow), including repository evidence pending within its grace period | `#725800` | `#F3D16B` |
 
 ## Rule Set token
 

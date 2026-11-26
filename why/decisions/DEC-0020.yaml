@@ -2,8 +2,8 @@ id: DEC-0020
 name: Release Facts
 context: >-
   Teams need to find the reported governance evidence for a release commit.
-  A release workflow can report the release before the ledger integrates
-  with the source-control platform.
+  A release workflow can report the release independently of source-control
+  inventory collection under DEC-0024.
 decision: >-
   An authenticated sender reports a release fact with a repository, a
   version and a commit. The version is an opaque string unique within the

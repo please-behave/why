@@ -10,5 +10,7 @@ linked:
     source: github:please-behave/cockpit
   - alias: gateway
     source: github:please-behave/gateway
+  - alias: github-collector
+    source: github:please-behave/github-collector
   - alias: ledger
     source: github:please-behave/ledger

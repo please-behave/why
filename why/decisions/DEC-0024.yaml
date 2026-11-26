@@ -1,0 +1,64 @@
+id: DEC-0024
+name: Repository Inventory and Status
+context: >-
+  Attestations describe individual runs. A repository inventory and sampled
+  default-branch heads let the platform identify repositories with missing
+  check evidence, including repositories that have never reported.
+decision: |-
+  Run one collector per source-control platform. The first is the GitHub
+  collector. Each collector has its own repository under DEC-0003 and follows
+  the Rust service and container image conventions of DEC-0004 and DEC-0005.
+  Collectors read their platform API and report through the same ledger-owned
+  contract. The ledger alone owns the database and has no platform API dependency.
+
+  A collector is a trusted sender to the ledger. It submits platform facts
+  directly on the internal network under DEC-0007. The gateway never forwards
+  the collector route. These facts record what the platform reported. Evidence
+  about checks comes from the sender-reported attestations in DEC-0008.
+
+  Use the normalized Git repository identity from attestations (DEC-0010),
+  retaining its host and qualifying it by source-control platform. The ledger
+  keeps one inventory entry per repository. Each newer inventory report
+  replaces its current state. When a completed inventory shows a repository
+  has disappeared from the covered scope, mark it as missing and retain the
+  entry. Keep append-only default-branch head observations, recording the first
+  observed head and then one entry per observed change with its observation
+  time. A heartbeat records when a sync completed and which scope it covered.
+
+  Collectors periodically list repositories for their configured owners and
+  individual repositories. Fetch a head on first discovery and thereafter
+  only when the repository's last-activity timestamp changes. Use conditional
+  requests. The refresh cadence is independent of attestation arrivals.
+
+  The ledger derives status on read and never stores it. Use the latest
+  completed heartbeat covering the repository and the latest head by
+  observation time, independent of delivery order relative to attestations.
+  Apply these states in order, using the shared
+  [status tokens](../../brand/README.md#status-tokens):
+
+  - Unknown (status-not-run) if there is no covering heartbeat or it is stale.
+  - Never integrated (status-failed) if the repository has no attestation
+    containing `check`.
+  - Unknown (status-not-run) if there is no observed head to compare.
+  - Current (status-passed) if DEC-0021 finds evidence for the exact observed
+    head. Current describes the presence of evidence, regardless of its
+    reported rule verdicts.
+  - Pending (status-allowed) while the head has no direct evidence and the
+    elapsed time since pending began is within the grace period.
+  - Overdue (status-warning) once the grace period ends. Report the elapsed
+    overdue duration in steps. The grace period and step boundaries are
+    configurable in the ledger.
+
+  Pending begins at the first observation after the newest observed head
+  with evidence. If the repository's check evidence is all for commits that
+  were never observed as heads, pending begins at the first head observation.
+  Use observation time to compute the duration.
+
+  Observed heads are a sample. A head replaced between two reads does not
+  count as a gap. The count of observed heads since the last evidence is an
+  informational lower bound. It makes no claim about coverage percentage.
+rationale: >-
+  An inventory independent of attestation arrivals reveals repositories
+  outside existing reporting workflows. Keeping platform access in collectors
+  isolates platform-specific concerns. Deriving status from timed observations
+  and exact-commit evidence keeps it accurate as either arrives.
