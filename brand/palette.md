@@ -27,12 +27,32 @@ Use `border-subtle` only where the content stays perceivable without the divider
 | `accent-fill` | Primary action fill | `#1C56BD` | `accent-link` |
 | `accent-text` | Label on a primary action fill | `surface` | `surface` |
 | `accent-surface` | Tinted background for selected rows and interactive panels | `#EAF2FF` | `#243653` |
+| `nav-hover-surface` | Background for hovered navigation segments | `accent-surface` | `#10121B` |
 
 Use lighter blue steps in the dark theme for links, focus and action fills. Underline content links. Use a visible label, indicator or boundary when the tinted background conveys a state. Separate a focus ring from a filled control with a gap that shows the surrounding surface.
 
+## Badge tones
+
+Use a tint, label and outline for each classification. Plain badges use `accent-surface`, `text` and `border`. Keep the visible classification label in every theme.
+
+| Token | Role | Light | Dark |
+|---|---|---|---|
+| `chip-check-surface` | Check surface | `#DCF3F0` | `#12312F` |
+| `chip-check-text` | Check text | `#0A4A45` | `#A4E6DD` |
+| `chip-check-border` | Check border | `#2A7F78` | `#4DA89E` |
+| `chip-review-surface` | Review surface | `#E3EDFC` | `accent-surface` |
+| `chip-review-text` | Review text | `#173F80` | `accent-link-hover` |
+| `chip-review-border` | Review border | `#3565AD` | `accent-focus` |
+| `chip-blocking-surface` | Blocking surface | `#C5CDD8` | `#475268` |
+| `chip-blocking-text` | Blocking text | `#0F1623` | `#F4F7FB` |
+| `chip-blocking-border` | Blocking border | `#3A485C` | `#B4C0D4` |
+| `chip-neutral-surface` | Non-blocking surface | `#EEEEF0` | `#2C2B32` |
+| `chip-neutral-text` | Non-blocking text | `#3A3A42` | `#D0CED8` |
+| `chip-neutral-border` | Non-blocking border | `#7A7A85` | `#8F8C99` |
+
 ## Status tokens
 
-Apply status tokens to labels and symbols on neutral surfaces.
+Apply status tokens to labels and symbols on neutral surfaces. A status indicator in an interactive tile or chip retains its color when the surface changes on hover.
 
 | Token | Meaning | Light | Dark |
 |---|---|---|---|
@@ -92,6 +112,37 @@ A primary action's fill identifies the control against its surroundings. Its lab
 | `border` | `accent-surface` | 4.19:1 | 3.27:1 |
 | `accent-focus` | `accent-surface` | 4.59:1 | 5.23:1 |
 | `accent-fill` | `accent-surface` | 5.98:1 | 6.01:1 |
+| `status-passed` | `accent-surface` | 6.22:1 | 6.88:1 |
+| `status-failed` | `accent-surface` | 6.70:1 | 5.70:1 |
+| `status-error` | `accent-surface` | 6.98:1 | 6.65:1 |
+| `status-warning` | `accent-surface` | 6.71:1 | 7.01:1 |
+| `status-not-run` | `accent-surface` | 5.83:1 | 5.39:1 |
+| `status-allowed` | `accent-surface` | 5.99:1 | 8.19:1 |
+
+### Hovered navigation
+
+The hover outline and inset focus ring remain visible against the hover surface.
+
+| Foreground | Background | Light | Dark |
+|---|---|---:|---:|
+| `accent-link-hover` | `nav-hover-surface` | 8.53:1 | 12.34:1 |
+| `border` | `nav-hover-surface` | 4.19:1 | 5.02:1 |
+| `accent-focus` | `nav-hover-surface` | 4.59:1 | 8.04:1 |
+
+### Classification badges
+
+Text contrasts with the tint and surrounding neutral surfaces. The outline identifies the badge against both its tint and its surroundings.
+
+| Foreground | Light on tint | Dark on tint | Light on page | Dark on page | Light on raised | Dark on raised |
+|---|---:|---:|---:|---:|---:|---:|
+| `chip-check-text` | 8.72:1 | 9.92:1 | 10.10:1 | 13.09:1 | 9.40:1 | 10.66:1 |
+| `chip-check-border` | 4.11:1 | 4.92:1 | 4.77:1 | 6.49:1 | 4.44:1 | 5.29:1 |
+| `chip-review-text` | 8.64:1 | 8.03:1 | 10.20:1 | 12.15:1 | 9.49:1 | 9.90:1 |
+| `chip-review-border` | 4.92:1 | 5.23:1 | 5.81:1 | 7.91:1 | 5.40:1 | 6.45:1 |
+| `chip-blocking-text` | 11.30:1 | 7.31:1 | 18.11:1 | 17.12:1 | 16.86:1 | 13.95:1 |
+| `chip-blocking-border` | 5.79:1 | 4.27:1 | 9.29:1 | 10.01:1 | 8.64:1 | 8.16:1 |
+| `chip-neutral-text` | 9.72:1 | 9.01:1 | 11.27:1 | 11.83:1 | 10.49:1 | 9.64:1 |
+| `chip-neutral-border` | 3.66:1 | 4.26:1 | 4.24:1 | 5.59:1 | 3.95:1 | 4.55:1 |
 
 ### Rule Set chips
 
