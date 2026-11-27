@@ -1,0 +1,12 @@
+id: DEC-0026
+name: Shared Web Interface Principles
+context: >-
+  DEC-0009 establishes the shared visual identity. The cockpit and the
+  documentation site also need shared rules for how their web views are
+  organized, behave and are reviewed.
+decision: >-
+  Apply the Interface Principles (../../brand/interface-principles.md) to
+  Please Behave web surfaces, including the cockpit and the documentation site.
+rationale: >-
+  A shared set of verifiable principles gives component maintainers a common
+  basis for design choices and for detecting regressions.

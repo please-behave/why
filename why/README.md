@@ -14,6 +14,8 @@ AI-assisted development is becoming more autonomous, while responsibility for qu
 - **Actionable and auditable results.** Results are structured and machine-readable. They state what was evaluated, the outcome, the evidence, the violations, what prevented verification and which source state was evaluated.
 - **Minimal complexity.** Keep each component focused on its responsibility. Add services, storage and extension points only when the product needs them.
 
+The [interface principles](../brand/interface-principles.md) apply to Please Behave web surfaces.
+
 ## Guiding question
 
 Does this make development expectations easier to define, verify, enforce or understand without unnecessarily taking control of the development process? If not, it probably does not belong in Please Behave.
@@ -45,3 +47,4 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0023](decisions/DEC-0023.yaml) Deployment Facts
 - [DEC-0024](decisions/DEC-0024.yaml) Repository Inventory and Status
 - [DEC-0025](decisions/DEC-0025.yaml) Archived Repositories
+- [DEC-0026](decisions/DEC-0026.yaml) Shared Web Interface Principles

@@ -2,6 +2,8 @@
 
 [DEC-0009](../why/decisions/DEC-0009.yaml) establishes the shared visual identity. Components use the semantic token names below in both themes. Hex values are sRGB.
 
+The [interface principles](interface-principles.md) govern how web views use this identity.
+
 ## Logo
 
 - Use [logo.svg](logo.svg) on light surfaces. Use [logo-dark.svg](logo-dark.svg) on dark surfaces, where its off-white outline preserves the shield silhouette.
