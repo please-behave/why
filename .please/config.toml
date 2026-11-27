@@ -37,7 +37,7 @@ target = "LICENSE"
 [[imports]]
 git = "https://github.com/christianpflugradt/repository-catalog.git"
 path = "rulesets/why"
-ref = "356256b67beed2419a0691611bb71aa3736c326e"
+ref = "eeda3e8ee070b9822b2a2938b7f27c6284ac3703"
 
 [[adapter_imports]]
 id = "gemini-flash-lite"
