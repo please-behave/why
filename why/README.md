@@ -48,3 +48,4 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0024](decisions/DEC-0024.yaml) Repository Inventory and Status
 - [DEC-0025](decisions/DEC-0025.yaml) Archived Repositories
 - [DEC-0026](decisions/DEC-0026.yaml) Shared Web Interface Principles
+- [DEC-0027](decisions/DEC-0027.yaml) UTC Timestamps and Local Display

@@ -1,0 +1,15 @@
+id: DEC-0027
+name: UTC Timestamps and Local Display
+context: >-
+  Please Behave components produce, store and exchange timestamps for the
+  same events. Viewers need to recognize those times in their own time zone.
+decision: >-
+  A timestamp represents an instant. Store it in UTC and use RFC 3339 with
+  a Z suffix in textual storage and data exchanged between components.
+  Never store or send a local time without an offset. Convert an instant
+  to the viewer's local time zone only for display. Never use a fixed
+  display time zone.
+rationale: >-
+  A canonical representation keeps an instant unambiguous across machines
+  and time zones. Local display lets viewers relate the instant to their
+  own clocks without changing the underlying evidence.
