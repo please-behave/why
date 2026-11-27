@@ -34,7 +34,7 @@ decision: |-
   completed heartbeat covering the repository and the latest head by
   observation time, independent of delivery order relative to attestations.
   Apply these states in order, using the shared
-  [status tokens](../../brand/README.md#status-tokens):
+  [status tokens](../../brand/palette.md#status-tokens):
 
   - Unknown (status-not-run) if there is no covering heartbeat or it is stale.
   - Never integrated (status-failed) if the repository has no attestation

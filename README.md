@@ -40,5 +40,6 @@ See the [repository declaration](why/repositories.yaml) for the aliases assigned
 
 - [Product](why/README.md): purpose, principles and the decisions that span components.
 - [Vision](vision.md): where Please Behave is heading.
-- [Visual identity](brand/README.md) documents the shared logo assets, color tokens and their use.
+- [Visual identity](brand/README.md) documents the shared logo and brand tokens.
+- [Interface palette](brand/palette.md) defines the shared interface tokens and verified contrast pairings.
 - [Interface principles](brand/interface-principles.md) govern how Please Behave web views are organized and reviewed.

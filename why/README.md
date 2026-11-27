@@ -30,7 +30,7 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0006](decisions/DEC-0006.yaml) Component-Owned Versioned HTTP Contracts
 - [DEC-0007](decisions/DEC-0007.yaml) Public Access Through a Proxy
 - [DEC-0008](decisions/DEC-0008.yaml) Attestations Carry Reported Evidence
-- [DEC-0009](decisions/DEC-0009.yaml) Shared Visual Identity
+- [DEC-0009](decisions/DEC-0009.yaml) Shared Visual Identity (superseded)
 - [DEC-0010](decisions/DEC-0010.yaml) Stable Rule Identity
 - [DEC-0011](decisions/DEC-0011.yaml) Owner-Assigned Rule Versions
 - [DEC-0012](decisions/DEC-0012.yaml) Rule Version Registration
@@ -49,3 +49,4 @@ Does this make development expectations easier to define, verify, enforce or und
 - [DEC-0025](decisions/DEC-0025.yaml) Archived Repositories
 - [DEC-0026](decisions/DEC-0026.yaml) Shared Web Interface Principles
 - [DEC-0027](decisions/DEC-0027.yaml) UTC Timestamps and Local Display
+- [DEC-0028](decisions/DEC-0028.yaml) Shared Visual Identity and Interface Palette

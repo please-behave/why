@@ -6,7 +6,7 @@
 2. **Exceptions.** Put exceptions ahead of healthy states. Give healthy states subdued visual treatment.
 3. **Records and summaries.** Give each record one row in a table and present summaries as widgets. Keep cells that identify a record on one line.
 4. **Density and targets.** Use compact spacing by default and increase spacing around controls for coarse pointers. Give every interactive target a width and height of at least 24 CSS pixels.
-5. **Hierarchy.** Give each region one visually primary element. Put links on names and use muted text for secondary content and zero counts.
+5. **Hierarchy.** Give each region one visually primary element. Put links on names and use muted text for secondary content and zero counts. Use the [interface palette](palette.md) for text, links, focus and surfaces.
 6. **Display forms.** Follow the [display forms](#display-forms) for outcomes, row classifications, object references, popups and versions.
 7. **Previews.** Make all information and navigation available without hover, including when details appear in a preview. Keep a preview that contains links open while the pointer is over it or keyboard focus is inside it.
 8. **Shared components.** Implement each recurring element as one shared component and use its styling consistently across views.
@@ -14,7 +14,7 @@
 
 ## Display forms
 
-- **Outcomes.** Show each verdict, status or verification result as a distinct symbol and a visible text label, both in the corresponding [status color](README.md#status-tokens). Leave both unframed.
+- **Outcomes.** Show each verdict, status or verification result as a distinct symbol and a visible text label, both in the corresponding [status color](palette.md#status-tokens). Leave both unframed.
 - **Row classifications.** Show a rule kind, blocking state or other row classification in a tinted rectangle with a small corner radius.
 - **Object references.** Show references such as a Rule Set or a repository on the dashboard map as fully rounded capsules that link to the referenced object. In a table heading, make the object's name the heading link and omit the capsule.
 - **Popups.** Use a popup only to add information the view does not already show, such as the full value of truncated text or an explanation. Omit repeated visible text.

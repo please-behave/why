@@ -1,0 +1,22 @@
+id: DEC-0028
+name: Shared Visual Identity and Interface Palette
+context: >-
+  The cockpit, documentation and repository READMEs share the Please Behave
+  identity. Web interfaces need theme-specific tokens for interaction and
+  accessible pairings that can evolve independently of the logo.
+decision: >-
+  Use the transparent vector masters and reserve the brand tokens for the logo
+  and identity surfaces (../../brand/README.md). Use the shared interface
+  palette for web interfaces (../../brand/palette.md). Meet WCAG 2.2 AA
+  contrast for text and meaningful interface elements using the verified
+  pairings in the palette. Use dedicated status tokens for outcomes and pair
+  every status color with a visible label or distinct symbol. Provide an
+  accessible name when the symbol stands alone. Use dedicated Rule Set tokens
+  to distinguish shared Rule Sets from bundles of local rules.
+rationale: >-
+  A shared mark keeps the product recognizable. Semantic tokens keep the
+  interface consistent across themes and let the palette evolve independently.
+  Labels and symbols keep outcomes understandable when color alone is
+  insufficient.
+supersedes:
+  - DEC-0009

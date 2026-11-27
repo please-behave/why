@@ -77,7 +77,7 @@ A rule set is a versioned platform entity that bundles rules. [DEC-0016](why/dec
 
 An organization defines which repositories must apply which rule sets and can set an effective date. The ledger combines those expectations with the repository inventory from the source-control platform and the attestations it has received. That lets it identify gaps even for repositories that have never reported.
 
-The cockpit uses the [shared status palette](brand/README.md#status-tokens). A team binds a new rule set to a separate execution point that no gate requires. The CLI reports the failure, and the cockpit presents it as not yet satisfied but allowed until the effective date. Then the team moves the rule set to the blocking execution point.
+The cockpit uses the [shared status palette](brand/palette.md#status-tokens). A team binds a new rule set to a separate execution point that no gate requires. The CLI reports the failure, and the cockpit presents it as not yet satisfied but allowed until the effective date. Then the team moves the rule set to the blocking execution point.
 
 Expectations carry validity ranges so historical views can use the expectations in effect at the relevant time.
 
